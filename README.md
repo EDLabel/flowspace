@@ -61,59 +61,66 @@ A modern, full-stack project management application built with React, Node.js, a
    npm run dev
 
 5. **Access the application**
+   
+   #### Open your browser and navigate to:
    ```
-   Open your browser and navigate to:
    Frontend: http://localhost:3000
    Backend API: http://localhost:3001
 
 6. **Manual Setup (if needed)** 
-   ```
-   Backend Setup
    
+   #### Backend Setup
+   ```
    cd backend
    npm install
    npm run migrate
    npm run dev
+   ```
    
-   Frontend Setup
-   
+   #### Frontend Setup
+   ```
    cd frontend
    npm install
    npm run dev 
-
+   ```
 ### Usage
 
 Registration: Create a new account with email and password
 
-Login: Sign in with your credentials
+**Login:** Sign in with your credentials
 
-Create Projects: Click "+ New Project" to create your first project
+**Create Projects:** Click "+ New Project" to create your first project
 
-Manage Projects: View all your projects on the dashboard
+**Manage Projects:** View all your projects on the dashboard
 
-Logout: Secure logout functionality
+**Logout:** Secure logout functionality
 
 ### API Documentation
 
 ### Authentication Endpoints
-Method   Endpoint	          Description	          Body
+**Method**   **Endpoint**	          **Description**	          **Body**
 POST     /api/auth/register	  Register new user       {name, email, password, skills?}
 POST     /api/auth/login      Login user              {email, password}
 GET      /api/auth/profile    Get user profile	      Requires Auth
 
 ### Project Endpoints
-Method   Endpoint             Description	          Body
-GET      /api/projects	      Get user's projects	  Requires Auth
-POST     /api/projects	      Create new project	  {name, description?}
-GET      /api/projects/:id	  Get specific project	  Requires Auth
+```
+Method   Endpoint                Description	          Body
 
+GET      /api/projects	         Get user's projects	  Requires Auth
+POST     /api/projects	         Create new project	  {name, description?}
+GET      /api/projects/:id	 Get specific project	  Requires Auth
+```
 ### Utility Endpoints
-Method	 Endpoint	    Description
-GET	     /api/health	API health check
-GET	     /api/test-db	Database connection test
+```
+Method      Endpoint	         Description
+
+GET         /api/health	         API health check
+GET         /api/test-db         Database connection test
+```
 
 ### Database Schema
-
+```
 -- Users table
 CREATE TABLE users (
 id TEXT PRIMARY KEY,
@@ -140,9 +147,10 @@ user_id TEXT REFERENCES users(id),
 role TEXT DEFAULT 'member',
 PRIMARY KEY (project_id, user_id)
 );
+```
 
 ### Project Structure 
-
+```
 flowspace/
 ├── backend/
 │   ├── src/
@@ -169,35 +177,39 @@ flowspace/
 ├── README.md
 ├── LICENSE
 └── package.json           # Root package.json
+```
 
 ### Development
 
-Available Scripts
+#### Available Scripts
 From the root directory:
 
-npm run dev - Start both frontend and backend in development mode
+**npm run dev** - Start both frontend and backend in development mode
 
-npm run dev:backend - Start only the backend server
+**npm run dev:backend** - Start only the backend server
 
-npm run dev:frontend - Start only the frontend development server
+**npm run dev:frontend** - Start only the frontend development server
 
-npm run migrate - Run database migrations
+**npm run migrate** - Run database migrations
 
-npm run install:all - Install all dependencies for both frontend and backend
+**npm run install:all** - Install all dependencies for both frontend and backend
 
-Environment Variables
+
+### Environment Variables
+
 Create a .env file in the backend directory:
 
-### env
-
+```
 NODE_ENV=development
 PORT=3001
 JWT_SECRET=your-super-secure-jwt-secret-key
 FRONTEND_URL=http://localhost:3000 
+```
 
 ### Deployment
 
-Backend Deployment
+#### Backend Deployment
+
 The backend can be deployed to services like:
 
 Heroku
@@ -208,7 +220,7 @@ DigitalOcean App Platform
 
 AWS Elastic Beanstalk
 
-### Frontend Deployment
+#### Frontend Deployment
 
 The frontend can be deployed to:
 
@@ -220,7 +232,7 @@ GitHub Pages
 
 AWS S3 + CloudFront
 
-### Database
+#### Database
 
 For production, consider migrating from SQLite to:
 
@@ -232,19 +244,19 @@ AWS RDS
 
 ### Future Enhancements
 
-AI Task Assignment - Integrate OpenAI for intelligent task assignment
+**AI Task Assignment** - Integrate OpenAI for intelligent task assignment
 
-Kanban Board - Drag-and-drop task management
+**Kanban Board** - Drag-and-drop task management
 
-Real-time Updates - WebSocket integration
+**Real-time Updates** - WebSocket integration
 
-Task Comments - Comment system with sentiment analysis
+**Task Comments** - Comment system with sentiment analysis
 
-File Uploads - Attach files to projects and tasks
+**File Uploads** - Attach files to projects and tasks
 
-Team Collaboration - Invite team members to projects
+**Team Collaboration** - Invite team members to projects
 
-Advanced Analytics - Project progress and team performance
+**Advanced Analytics** - Project progress and team performance
 
 ### Contributing
 
@@ -259,7 +271,7 @@ Push to the branch (git push origin feature/amazing-feature)
 Open a Pull Request
 
 ### License
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the **LICENSE** file for details.
 
 ### Authors
 Edward Gumenke - Initial work
