@@ -122,7 +122,7 @@ GET         /api/health	         API health check
 GET         /api/test-db         Database connection test
 ```
 
-### Database Schema
+## Database Schema
 ```
 -- Users table
 CREATE TABLE users (
