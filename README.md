@@ -37,11 +37,11 @@ A modern, full-stack project management application built with React, Node.js, a
 
 ## Installation & Setup
 
-### Prerequisites
+## Prerequisites
 - Node.js (version 14 or higher)
 - npm or yarn
 
-### Quick Start
+## Quick Start
 
 1. **Clone the repository**
    ```
@@ -83,9 +83,9 @@ A modern, full-stack project management application built with React, Node.js, a
    npm install
    npm run dev 
    ```
-### Usage
+## Usage
 
-Registration: Create a new account with email and password
+**Registration:** Create a new account with email and password
 
 **Login:** Sign in with your credentials
 
@@ -95,23 +95,26 @@ Registration: Create a new account with email and password
 
 **Logout:** Secure logout functionality
 
-### API Documentation
+## API Documentation
 
-### Authentication Endpoints
-**Method**   **Endpoint**	          **Description**	          **Body**
-POST     /api/auth/register	  Register new user       {name, email, password, skills?}
-POST     /api/auth/login      Login user              {email, password}
-GET      /api/auth/profile    Get user profile	      Requires Auth
+#### Authentication Endpoints
+```
+Method      Endpoint                Description             Body
 
-### Project Endpoints
+POST        /api/auth/register      Register new user       {name, email, password, skills?}
+POST        /api/auth/login         Login user              {email, password}
+GET         /api/auth/profile       Get user profile        Requires Auth
+```
+
+#### Project Endpoints
 ```
 Method   Endpoint                Description	          Body
 
 GET      /api/projects	         Get user's projects	  Requires Auth
 POST     /api/projects	         Create new project	  {name, description?}
-GET      /api/projects/:id	 Get specific project	  Requires Auth
+GET      /api/projects/:id       Get specific project	  Requires Auth
 ```
-### Utility Endpoints
+#### Utility Endpoints
 ```
 Method      Endpoint	         Description
 
@@ -149,7 +152,7 @@ PRIMARY KEY (project_id, user_id)
 );
 ```
 
-### Project Structure 
+## Project Structure 
 ```
 flowspace/
 ├── backend/
@@ -179,7 +182,7 @@ flowspace/
 └── package.json           # Root package.json
 ```
 
-### Development
+## Development
 
 #### Available Scripts
 From the root directory:
@@ -195,7 +198,7 @@ From the root directory:
 **npm run install:all** - Install all dependencies for both frontend and backend
 
 
-### Environment Variables
+## Environment Variables
 
 Create a .env file in the backend directory:
 
@@ -206,9 +209,9 @@ JWT_SECRET=your-super-secure-jwt-secret-key
 FRONTEND_URL=http://localhost:3000 
 ```
 
-### Deployment
+## Deployment
 
-#### Backend Deployment
+### Backend Deployment
 
 The backend can be deployed to services like:
 
@@ -220,7 +223,7 @@ DigitalOcean App Platform
 
 AWS Elastic Beanstalk
 
-#### Frontend Deployment
+### Frontend Deployment
 
 The frontend can be deployed to:
 
@@ -232,7 +235,7 @@ GitHub Pages
 
 AWS S3 + CloudFront
 
-#### Database
+### Database
 
 For production, consider migrating from SQLite to:
 
@@ -242,7 +245,7 @@ MySQL
 
 AWS RDS
 
-### Future Enhancements
+## Future Enhancements
 
 **AI Task Assignment** - Integrate OpenAI for intelligent task assignment
 
@@ -258,7 +261,7 @@ AWS RDS
 
 **Advanced Analytics** - Project progress and team performance
 
-### Contributing
+## Contributing
 
 Fork the project
 
@@ -270,13 +273,13 @@ Push to the branch (git push origin feature/amazing-feature)
 
 Open a Pull Request
 
-### License
+## License
 This project is licensed under the MIT License - see the **LICENSE** file for details.
 
-### Authors
-Edward Gumenke - Initial work
+## Authors
+**Edward Gumenke** - Initial work
 
-### Acknowledgments
+## Acknowledgments
 React team for the amazing framework
 
 Express.js for the simple and flexible backend
