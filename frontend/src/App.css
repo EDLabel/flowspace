@@ -234,3 +234,71 @@
 .logout-btn:hover {
     background: #dc2626;
 }
+
+/* Add these to your existing App.css */
+
+/* Task styles */
+.task-card {
+    transition: all 0.2s ease-in-out;
+}
+
+.status-column {
+    min-height: 400px;
+}
+
+/* Project card hover effects */
+.project-card {
+    background: white;
+    padding: 24px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    border: 1px solid #e2e8f0;
+    transition: all 0.2s ease-in-out;
+}
+
+.project-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.role-tag {
+    background: #dbeafe;
+    color: #1e40af;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+/* Container styles */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Responsive grid */
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .task-list .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Auth Brand Styles */
+.auth-brand {
+    text-align: center;
+    margin-bottom: 8px;
+    color: #3b82f6;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.auth-subtitle {
+    text-align: center;
+    color: #64748b;
+    margin-bottom: 30px;
+    font-size: 1rem;
+}

@@ -1,11 +1,10 @@
 const { run } = require('../config/database');
-const { v4: uuidv4 } = require('uuid');
 
 const createTables = async () => {
     try {
         console.log('🔄 Creating database tables...');
 
-        // Users table
+        // Users table (unchanged)
         await run(`
       CREATE TABLE IF NOT EXISTS users (
         id TEXT PRIMARY KEY,
@@ -18,7 +17,7 @@ const createTables = async () => {
       )
     `);
 
-        // Projects table
+        // Projects table (unchanged)
         await run(`
       CREATE TABLE IF NOT EXISTS projects (
         id TEXT PRIMARY KEY,
@@ -31,7 +30,7 @@ const createTables = async () => {
       )
     `);
 
-        // Project members table
+        // Project members table (unchanged)
         await run(`
       CREATE TABLE IF NOT EXISTS project_members (
         project_id TEXT,
@@ -44,7 +43,7 @@ const createTables = async () => {
       )
     `);
 
-        // Tasks table
+        // NEW: Tasks table
         await run(`
       CREATE TABLE IF NOT EXISTS tasks (
         id TEXT PRIMARY KEY,
@@ -64,21 +63,6 @@ const createTables = async () => {
       )
     `);
 
-        // Comments table
-        await run(`
-      CREATE TABLE IF NOT EXISTS comments (
-        id TEXT PRIMARY KEY,
-        content TEXT NOT NULL,
-        task_id TEXT,
-        user_id TEXT,
-        sentiment_score REAL,
-        sentiment_label TEXT,
-        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (task_id) REFERENCES tasks (id) ON DELETE CASCADE,
-        FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
-      )
-    `);
-
         console.log('✅ Database tables created successfully!');
 
     } catch (error) {
@@ -92,7 +76,6 @@ if (require.main === module) {
     createTables()
         .then(() => {
             console.log('🎉 Database setup complete!');
-            console.log('💡 You can now start the server with: npm run dev');
             process.exit(0);
         })
         .catch((error) => {

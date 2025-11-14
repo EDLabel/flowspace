@@ -1,0 +1,134 @@
+.dashboard-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.dashboard-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.dashboard-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #1e293b;
+    margin-bottom: 8px;
+}
+
+.dashboard-subtitle {
+    font-size: 1.25rem;
+    color: #64748b;
+    margin: 0;
+}
+
+.projects-section {
+    margin-top: 40px;
+}
+
+.projects-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.projects-title {
+    font-size: 1.875rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin: 0;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+}
+
+.project-card {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+}
+
+.project-card.clickable {
+    cursor: pointer;
+}
+
+.project-card.clickable:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+.project-card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin: 0 0 12px 0;
+}
+
+.project-card-description {
+    color: #64748b;
+    margin: 0 0 20px 0;
+    line-height: 1.5;
+}
+
+.project-card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.project-card-role {
+    background: #dbeafe;
+    color: #1e40af;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.project-card-date {
+    color: #64748b;
+    font-size: 0.875rem;
+}
+
+.empty-projects {
+    text-align: center;
+    padding: 60px 20px;
+    grid-column: 1 / -1;
+    background: #f8fafc;
+    border-radius: 8px;
+    border: 2px dashed #cbd5e1;
+}
+
+.empty-projects-message {
+    color: #64748b;
+    font-size: 1.125rem;
+    margin-bottom: 20px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .dashboard-title {
+        font-size: 2rem;
+    }
+
+    .dashboard-subtitle {
+        font-size: 1.125rem;
+    }
+
+    .projects-header {
+        flex-direction: column;
+        gap: 16px;
+        align-items: stretch;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
