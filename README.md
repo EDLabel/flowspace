@@ -11,6 +11,12 @@ A modern, full-stack project management application built with React, Node.js, a
 
 - **User Authentication** - Secure JWT-based registration and login system
 - **Project Management** - Create, view, and manage multiple projects
+- **Task Management** - Complete task system within projects
+   - Create, edit, and delete tasks
+   - Track task status (To Do, In Progress, Review, Done)
+   - Set task priorities (Low, Medium, High, Urgent)
+   - Assign due dates and descriptions
+   - Visual status indicators and priority colors
 - **Modern UI** - Clean, responsive React interface with modern CSS
 - **RESTful API** - Full backend API with Express.js
 - **SQLite Database** - Lightweight database for development and production
@@ -85,42 +91,49 @@ A modern, full-stack project management application built with React, Node.js, a
    ```
 ## Usage
 
-**Registration:** Create a new account with email and password
-
-**Login:** Sign in with your credentials
-
-**Create Projects:** Click "+ New Project" to create your first project
-
-**Manage Projects:** View all your projects on the dashboard
-
-**Logout:** Secure logout functionality
+1. **Registration**: Create a new account with email and password
+2. **Login**: Sign in with your credentials
+3. **Create Projects**: Click "+ New Project" to create your first project
+4. **Manage Tasks**: Click on any project to open its details and manage tasks
+5. **Create Tasks**: Click "+ New Task" to add tasks to a project
+6. **Update Task Status**: Use the status buttons to update task progress
+7. **Set Priorities**: Change task priority with the priority buttons
+8. **Delete Tasks**: Remove tasks with the delete button
+9. **Logout**: Secure logout functionality
 
 ## API Documentation
 
-#### Authentication Endpoints
-```
-Method      Endpoint                Description             Body
+#### Task Endpoints
 
-POST        /api/auth/register      Register new user       {name, email, password, skills?}
-POST        /api/auth/login         Login user              {email, password}
-GET         /api/auth/profile       Get user profile        Requires Auth
-```
+| Method | Endpoint | Description | Body |
+|--------|----------|-------------|------|
+| GET | `/api/tasks/project/:projectId` | Get tasks for a project | Requires Auth |
+| POST | `/api/tasks` | Create a new task | `{title, description?, status?, priority?, due_date?, project_id, assigned_to?}` |
+| PATCH | `/api/tasks/:taskId` | Update a task | `{title?, description?, status?, priority?, due_date?, assigned_to?}` |
+| DELETE | `/api/tasks/:taskId` | Delete a task | Requires Auth |
+
+#### Authentication Endpoints
+
+| Method | Endpoint | Description | Body |
+|-------|----------|-------------|------|
+|POST   |     /api/auth/register  |    Register new user   |    {name, email, password, skills?}|
+|POST   |     /api/auth/login     |    Login user          |    {email, password}|
+|GET    |     /api/auth/profile   |    Get user profile    |    Requires Auth|
 
 #### Project Endpoints
-```
-Method   Endpoint                Description	          Body
 
-GET      /api/projects	         Get user's projects	  Requires Auth
-POST     /api/projects	         Create new project	  {name, description?}
-GET      /api/projects/:id       Get specific project	  Requires Auth
-```
+| Method |  Endpoint       |         Description	      |    Body|
+|--------|------------------|-----------------------------|---------|
+| GET    |  /api/projects	     |    Get user's projects	|  Requires Auth|
+| POST   |  /api/projects	     |    Create new project	|  {name, description?}|
+|  GET   |  /api/projects/:id  |     Get specific project	|  Requires Auth|
+
 #### Utility Endpoints
-```
-Method      Endpoint	         Description
 
-GET         /api/health	         API health check
-GET         /api/test-db         Database connection test
-```
+|Method   | Endpoint	                                    | Description                 |
+|--------|----------------------------------------------|-----------------------------|
+|GET     | /api/health	      | API health check            |
+|GET     | /api/test-db      |    Database connection test |
 
 ## Database Schema
 ```
@@ -157,29 +170,41 @@ PRIMARY KEY (project_id, user_id)
 flowspace/
 ├── backend/
 │   ├── src/
-│   │   ├── config/          # Database configuration
-│   │   ├── controllers/     # Route controllers
-│   │   ├── middleware/      # Auth middleware
-│   │   ├── models/          # Data models
-│   │   ├── routes/          # API routes
-│   │   ├── utils/           # Utilities & migrations
-│   │   └── server.js        # Main server file
-│   ├── package.json
-│   └── .env.example
-├── frontend/
-│   ├── src/
-│   │   ├── components/      # React components
-│   │   ├── services/        # API services
-│   │   ├── App.jsx          # Main App component
-│   │   └── main.jsx         # React entry point
-│   ├── public/
-│   ├── package.json
-│   └── vite.config.js
-├── scripts/
-│   └── setup.js            # Project setup script
-├── README.md
-├── LICENSE
-└── package.json           # Root package.json
+│   │   ├── config/
+│   │   ├── controllers/
+│   │   │   ├── authController.js
+│   │   │   ├── projectController.js
+│   │   │   └── taskController.js
+│   │   ├── middleware/
+│   │   ├── models/
+│   │   │   ├── User.js
+│   │   │   └── Task.js
+│   │   ├── routes/
+│   │   │   ├── auth.js
+│   │   │   ├── projects.js
+│   │   │   └── tasks.js
+│   │   ├── utils/
+│   │   └── server.js
+│   └── package.json
+└── frontend/
+    ├── src/
+    │   ├── components/
+    │   │   ├── Auth/
+    │   │   ├── Common/
+    │   │   ├── Dashboard/
+    │   │   ├── Project/
+    │   │   └── Task/
+    │   │       ├── TaskCard.jsx
+    │   │       ├── TaskCard.css
+    │   │       ├── TaskList.jsx
+    │   │       ├── TaskList.css
+    │   │       ├── CreateTaskForm.jsx
+    │   │       └── CreateTaskForm.css
+    │   ├── services/
+    │   ├── App.jsx
+    │   ├── App.css
+    │   └── main.jsx
+    └── package.json
 ```
 
 ## Development
@@ -247,19 +272,14 @@ AWS RDS
 
 ## Future Enhancements
 
-**AI Task Assignment** - Integrate OpenAI for intelligent task assignment
-
-**Kanban Board** - Drag-and-drop task management
-
-**Real-time Updates** - WebSocket integration
-
-**Task Comments** - Comment system with sentiment analysis
-
-**File Uploads** - Attach files to projects and tasks
-
-**Team Collaboration** - Invite team members to projects
-
-**Advanced Analytics** - Project progress and team performance
+- [ ] **AI Task Assignment** - Integrate OpenAI for intelligent task assignment
+- [ ] **Comment System** - Task comments with sentiment analysis
+- [ ] **File Uploads** - Attach files to tasks
+- [ ] **Team Collaboration** - Invite team members to projects
+- [ ] **Real-time Updates** - WebSocket integration for live updates
+- [ ] **Advanced Analytics** - Project progress and team performance
+- [ ] **Calendar View** - Task scheduling and calendar integration
+- [ ] **Notifications** - Email and in-app notifications
 
 ## Contributing
 
